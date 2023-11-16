@@ -19,7 +19,11 @@ export default function Layout({ children }) {
         <Sidebar setIsOpen={setIsOpen} isOpen={isOpen} />
       )}
       <div className='flex gap-6 flex-col w-full'>
-        <Header setIsOpen={setIsOpen} />
+        {pathname.startsWith("/dashboard/courses/detailed") ? (
+          <Header title='Browse Back' setIsOpen={setIsOpen} />
+        ) : (
+          <Header title='Hello' setIsOpen={setIsOpen} />
+        )}
         <div className='bg-slate-950 text-slate-50 rounded-md min-h-screen py-8 px-8'>
           {children}
         </div>
