@@ -1,11 +1,13 @@
+import DeleteBtn from "@/components/admin/DeleteBtn";
 import { getData } from "@/utils/getData";
-import { Delete, Eye, Pencil, Plus, Trash } from "lucide-react";
+import { Eye, Pencil, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 export default async function Courses() {
   const getCourses = await getData("courses");
+
   // console.log(getCourses)
   return (
     <div className=''>
@@ -20,9 +22,12 @@ export default async function Courses() {
         </Link>
       </div>
       <div className='grid gap-5 grid-cols-1 md:grid-cols-3 py-8'>
-        {getCourses.map((course) => {
+        {getCourses.map((course, i) => {
           return (
-            <div className='max-w-sm  border  rounded-lg shadow bg-gray-800 border-gray-700'>
+            <div
+              key={i}
+              className='max-w-sm  border  rounded-lg shadow bg-gray-800 border-gray-700'
+            >
               <Link href='#'>
                 <Image
                   className='rounded-t-lg w-full h-[150px]'
@@ -54,9 +59,7 @@ export default async function Courses() {
                   >
                     <Pencil className='h-5 w-5' />
                   </Link>
-                  <button className='inline-flex items-center p-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-900 '>
-                    <Trash className='h-5 w-5' />
-                  </button>
+                  <DeleteBtn courseId={course.id} />
                 </div>
               </div>
             </div>
