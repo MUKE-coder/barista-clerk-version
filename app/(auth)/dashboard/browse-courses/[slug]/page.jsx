@@ -1,9 +1,13 @@
+import { getData } from "@/utils/getData";
 import { BookOpen } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function CourseDetail({ params: { slug } }) {
+export default async function CourseDetail({ params: { slug } }) {
+  // console.log(slug)
+  const getSingleBrowseCourse = await getData(`courses/${slug}`)
+  // console.log(getSingleBrowseCourse )
   return (
     <div className=''>
       <div className='grid grid-cols-12 gap-8'>
@@ -12,15 +16,20 @@ export default function CourseDetail({ params: { slug } }) {
             <div className='flex bg-purple-100 p-2 rounded-full text-slate-800 items-center justify-center'>
               <BookOpen className='w-4 h-4' />
             </div>
-            <span>32 Chapters</span>
+            <span>{getSingleBrowseCourse.chapters.length}</span>
           </div>
           <div className='px-5 py-2'>
             <h5 className='mb-2 text-2xl font-bold tracking-tight  text-slate-50 line-clamp-2'>
               Noteworthy technology acquisitions 2021
+          <div className="px-5 py-2">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight  text-slate-50 line-clamp-2">
+             {getSingleBrowseCourse.title}
             </h5>
             <p className='mb-3 font-normal text-gray-400 line-clamp-3'>
               Here are the biggest enterprise technology acquisitions of 2021 so
               far, in reverse chronological order.
+            <p className="mb-3 font-normal text-gray-400 line-clamp-3">
+              {getSingleBrowseCourse.description}
             </p>
           </div>
 
