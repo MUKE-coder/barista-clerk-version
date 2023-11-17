@@ -6,8 +6,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
 // schema.prisma
 model Course {
   id  String  @id @default(auto()) @map("_id") @db.ObjectId
