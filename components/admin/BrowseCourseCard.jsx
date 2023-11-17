@@ -11,7 +11,7 @@ export default function BrowseCourseCard({course}) {
     >
       <div>
         <Image
-          className="rounded-t-lg w-full h-[150px]"
+          className="rounded-t-lg w-full h-[150px] object-cover"
           src={course.imageUrl}
           alt=""
           width={1000}

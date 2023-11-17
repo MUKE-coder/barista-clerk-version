@@ -11,7 +11,7 @@ export default function Layout({ children }) {
       <Sidebar setIsOpen={setIsOpen} isOpen={isOpen} />
       <div className="flex gap-6 flex-col w-full">
         <Header setIsOpen={setIsOpen} />
-        <div className="bg-slate-950 text-slate-50 rounded-md min-h-screen py-8 px-8">
+        <div className="bg-slate-950 text-slate-50 rounded-md min-h-screen lg:py-8 lg:px-8">
           {children}
         </div>
       </div>

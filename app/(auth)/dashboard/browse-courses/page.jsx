@@ -4,7 +4,7 @@ import React from "react";
 
 export default async function Browse() {
   const getCourses= await getData("courses")
-  console.log(getCourses)
+  // console.log(getCourses)
   return (
     <div>
       <BrowseCourseList getCourses={getCourses}/>
