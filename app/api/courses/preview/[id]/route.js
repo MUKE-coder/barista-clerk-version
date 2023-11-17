@@ -27,3 +27,26 @@ export async function GET(request, { params: { id } }) {
     );
   }
 }
+
+export async function DELETE(request, { params: { id } }) {
+  // console.log(id);
+  try {
+    const course = await db.course.delete({
+      where: { id },
+    });
+
+    return NextResponse.json(course);
+  } catch (error) {
+    console.error("Error deleting a course for the course list:", error);
+
+    return NextResponse.json(
+      {
+        message: "Error deleting a course from the course list",
+        error: error.message,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}
