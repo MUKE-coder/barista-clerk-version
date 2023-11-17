@@ -6,7 +6,7 @@ import React from "react";
 
 export default async function CourseDetail({ params: { slug } }) {
   // console.log(slug)
-  const getSingleBrowseCourse = await getData(`courses/${slug}`)
+  const getSingleBrowseCourse = await getData(`courses/${slug}`);
   // console.log(getSingleBrowseCourse )
   return (
     <div className=''>
@@ -20,15 +20,9 @@ export default async function CourseDetail({ params: { slug } }) {
           </div>
           <div className='px-5 py-2'>
             <h5 className='mb-2 text-2xl font-bold tracking-tight  text-slate-50 line-clamp-2'>
-              Noteworthy technology acquisitions 2021
-          <div className="px-5 py-2">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight  text-slate-50 line-clamp-2">
-             {getSingleBrowseCourse.title}
+              {getSingleBrowseCourse.title}
             </h5>
             <p className='mb-3 font-normal text-gray-400 line-clamp-3'>
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-            <p className="mb-3 font-normal text-gray-400 line-clamp-3">
               {getSingleBrowseCourse.description}
             </p>
           </div>
