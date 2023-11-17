@@ -1,19 +1,14 @@
-"use client";
-import React from "react";
-import ReactPlayer from "react-player/youtube";
+import VideoPreview from "@/components/admin/video-preview/VideoPreview";
+import { getData } from "@/utils/getData";
 
-export default function CourseDetail({ params: { id } }) {
+export default async function CourseDetail({ params: { id } }) {
+  const previewSingleCourse = await getData(`courses/preview/${id}`);
+
+  // console.log(previewSingleCourse);
+
   return (
-    <div className='flex flex-col items-center h-screen gap-8'>
-      <h2 className='font-bold text-4xl uppercase'> video preview</h2>
-      <div className='bg-red-700 h-[70%] w-full'>
-        <ReactPlayer
-          height='600px'
-          width='1200px'
-          className='rounded-2xl'
-          url='https://www.youtube.com/watch?v=ZxjNa_Ief7U'
-        />
-      </div>
+    <div>
+      <VideoPreview preview={previewSingleCourse} />
     </div>
   );
 }
