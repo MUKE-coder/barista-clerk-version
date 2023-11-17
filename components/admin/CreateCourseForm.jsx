@@ -1,3 +1,4 @@
+import { generateSlug } from "@/utils/generateSlug";
 import { UploadDropzone } from "@/utils/uploadthing";
 import { useAuth } from "@clerk/nextjs";
 import { Pencil, Plus, Watch } from "lucide-react";
@@ -20,15 +21,18 @@ export default function CreateCourseForm({ setCurrentCourse }) {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
-  console.log(imageUrl);
+  // console.log(imageUrl);
 
   const isPublished = watch("isPublished");
   async function onSubmit(data) {
     const baseUrl = "http://localhost:3000";
     setLoading(true);
+  
+    const slug = generateSlug(data.title);
+    data.slug = slug;
     data.userId = userId;
     data.imageUrl = imageUrl;
-    console.log(data);
+  
     try {
       const response = await fetch(`${baseUrl}/api/courses`, {
         method: "POST",
@@ -37,7 +41,7 @@ export default function CreateCourseForm({ setCurrentCourse }) {
         },
         body: JSON.stringify(data),
       });
-      console.log(response);
+  
       if (response.ok) {
         setLoading(false);
         reset();
@@ -46,6 +50,9 @@ export default function CreateCourseForm({ setCurrentCourse }) {
         const courseData = await response.json();
         setCurrentCourse(courseData);
         console.log(courseData);
+      } else if (response.status === 409) {
+        setLoading(false);
+        toast.error("Course with this title already exists");
       }
     } catch (error) {
       setLoading(false);

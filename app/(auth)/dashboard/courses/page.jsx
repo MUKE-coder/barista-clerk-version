@@ -1,9 +1,12 @@
+import { getData } from "@/utils/getData";
 import { Delete, Eye, Pencil, Plus, Trash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function Courses() {
+export default async function Courses() {
+  const getCourses= await getData("courses")
+  console.log(getCourses)
   return (
     <div className="">
       <div className="flex text-slate-50 items-center justify-between border-b border-slate-700 pb-8">
@@ -16,12 +19,15 @@ export default function Courses() {
           <span>Add Course</span>
         </Link>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 py-8">
-        <div className="max-w-sm  border  rounded-lg shadow bg-gray-800 border-gray-700">
+      <div className="grid gap-5 grid-cols-1 md:grid-cols-3 py-8">
+        {
+          getCourses.map((course)=>{
+            return(
+<div className="max-w-sm  border  rounded-lg shadow bg-gray-800 border-gray-700">
           <Link href="#">
             <Image
               className="rounded-t-lg w-full h-[150px]"
-              src="/courses/barista.jpg"
+              src={course.imageUrl}
               alt=""
               width={1000}
               height={667}
@@ -30,12 +36,11 @@ export default function Courses() {
           <div className="p-5">
             <a href="#">
               <h5 className="mb-2 text-2xl font-bold tracking-tight  text-slate-50 line-clamp-1">
-                Noteworthy technology acquisitions 2021
+                {course.title}
               </h5>
             </a>
             <p className="mb-3 font-normal text-gray-400 line-clamp-2">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
+              {course.description}
             </p>
             <div className="flex items-center justify-between">
               <Link
@@ -55,7 +60,9 @@ export default function Courses() {
               </button>
             </div>
           </div>
-        </div>
+        </div>            )
+          })
+        }
       </div>
     </div>
   );
