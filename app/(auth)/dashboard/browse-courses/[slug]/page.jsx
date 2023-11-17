@@ -63,7 +63,7 @@ export default async function CourseDetail({ params: { slug } }) {
             </div>
             <Link
               className='block text-center py-2 px-8 bg-slate-50 rounded-md w-full text-slate-800 '
-              href='/dashboard/courses/detailed/id'
+              href={`/dashboard/courses/detailed/${getSingleBrowseCourse.id}`}
             >
               Preview the Course
             </Link>
