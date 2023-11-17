@@ -7,15 +7,15 @@ export const ourFileRouter = {
   courseImageUploader: f({ image: { maxFileSize: "4MB" } }).onUploadComplete(
     async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
-      console.log("Upload complete", metadata);
-      console.log("file url", file.url);
+      // console.log("Upload complete", metadata);
+      // console.log("file url", file.url);
     }
   ),
   courseAttachmentUploader: f(["pdf"]).onUploadComplete(
     async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
-      console.log("Upload complete", metadata);
-      console.log("file url", file.url);
+      // console.log("Upload complete", metadata);
+      // console.log("file url", file.url);
     }
   ),
 };
