@@ -6,27 +6,27 @@ import React from "react";
 
 export default async function Courses() {
   const getCourses= await getData("courses")
-  console.log(getCourses)
+  // console.log(getCourses)
   return (
     <div className="">
-      <div className="flex text-slate-50 items-center justify-between border-b border-slate-700 pb-8">
-        <h2 className="text-3xl font-semibold">Courses</h2>
+      <div className="flex text-slate-50 items-center p-4 justify-between border-b border-slate-700 pb-8">
+        <h2 className="lg:text-3xl text-2xl font-semibold">Courses</h2>
         <Link
           href="/dashboard/courses/create"
-          className="flex items-center space-x-3 bg-purple-400 text-slate-900 px-8 py-3 rounded-md font-semibold"
+          className="flex lg:text-sm text-xs items-center px-3 py-2 space-x-3 bg-purple-400 text-slate-900 md:px-8 md:py-3 lg:px-8 lg:py-3 rounded-md font-semibold"
         >
-          <Plus />
-          <span>Add Course</span>
+          <Plus className="text-xs"/>
+          <span >Add Course</span>
         </Link>
       </div>
-      <div className="grid gap-5 grid-cols-1 md:grid-cols-3 py-8">
+      <div className="grid gap-7 lg:gap-5 grid-cols-1 md:grid-cols-3 px-2 py-8">
         {
           getCourses.map((course)=>{
             return(
 <div className="max-w-sm  border  rounded-lg shadow bg-gray-800 border-gray-700">
           <Link href="#">
             <Image
-              className="rounded-t-lg w-full h-[150px]"
+              className="rounded-t-lg w-full h-[150px] object-cover bg-center"
               src={course.imageUrl}
               alt=""
               width={1000}
@@ -60,7 +60,7 @@ export default async function Courses() {
               </button>
             </div>
           </div>
-        </div>            )
+        </div>)
           })
         }
       </div>
