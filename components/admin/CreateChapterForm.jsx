@@ -61,6 +61,7 @@ export default function CreateChapterForm({
   //     // console.log(error);
   //   }
   // }
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   async function handleEdit(data) {
     setLoading(true);
