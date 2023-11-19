@@ -30,12 +30,13 @@ export default function Create({ id, course }) {
     },
   ];
   function changeDisplayForm(form) {
-    if (!courseId) {
+    if (!id) {
       toast.error("Please first create the Course");
     } else {
       setDisplayedForm(form);
     }
   }
+
   return (
     <section className='bg-white dark:bg-gray-900 rounded-md shadow-lg'>
       <div className='py-8 px-4 mx-auto max-w-2xl lg:py-8'>
@@ -72,12 +73,14 @@ export default function Create({ id, course }) {
           <CreateChapterForm
             id={id}
             course={course}
+            setCurrentCourse={setCurrentCourse}
             currentCourse={currentCourse}
           />
         ) : (
           <CreateAttachmentForm
             id={id}
             course={course}
+            setCurrentCourse={setCurrentCourse}
             currentCourse={currentCourse}
           />
         )}
