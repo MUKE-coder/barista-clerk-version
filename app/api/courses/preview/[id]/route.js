@@ -27,7 +27,35 @@ export async function GET(request, { params: { id } }) {
     );
   }
 }
+export async function PATCH(request, { params: { id } }) {
+  try {
+    const { title, price, description } = await request.json();
+    console.log(title, price, description);
+    const priceValue = parseFloat(price);
+    const UpdatedCourse = await db.course.update({
+      where: { id },
+      data: {
+        title,
+        price: isNaN(priceValue) ? null : priceValue,
+        description,
+      },
+    });
 
+    return NextResponse.json(UpdatedCourse);
+  } catch (error) {
+    console.error("Error updating a course for the course list:", error);
+
+    return NextResponse.json(
+      {
+        message: "Error updating a course from the course list",
+        error: error.message,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}
 export async function DELETE(request, { params: { id } }) {
   // console.log(id);
   try {

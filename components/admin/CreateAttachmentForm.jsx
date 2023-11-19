@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-export default function CreateAttachmentForm({ currentCourse }) {
+export default function CreateAttachmentForm({ currentCourse, id }) {
   const {
     handleSubmit,
     register,

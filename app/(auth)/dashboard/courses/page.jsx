@@ -54,7 +54,7 @@ export default async function Courses() {
                     <Eye className='h-5 w-5' />
                   </Link>
                   <Link
-                    href='#'
+                    href={`/dashboard/courses/edit/${course.id}`}
                     className='inline-flex items-center p-2 text-sm font-medium text-center text-white bg-slate-700 rounded-lg hover:bg-slate-900 '
                   >
                     <Pencil className='h-5 w-5' />
