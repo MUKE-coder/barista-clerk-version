@@ -56,7 +56,7 @@ export async function makePutRequest(
       body: JSON.stringify(data),
     });
     if (response.ok) {
-      console.log(response);
+      // console.log(response);
       setLoading(false);
       toast.success(`${resourceName} Updated Successfully`);
       redirect();

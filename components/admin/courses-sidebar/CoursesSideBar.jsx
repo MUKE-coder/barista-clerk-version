@@ -2,8 +2,8 @@
 import {
   BellDot,
   BookPlus,
-  GraduationCap,
-  LayoutDashboard,
+  Lock,
+  PauseCircle,
   LogOut,
   LogOutIcon,
   SlidersHorizontal,
@@ -13,32 +13,87 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Sidebar({ isOpen, setIsOpen }) {
+export default function CoursesSideBar({ isOpen, setIsOpen }) {
   const sidebarLinks = [
     {
-      title: "Dashboard",
-      href: "/dashboard",
-      icon: LayoutDashboard,
+      title: "Introduction",
+      href: "/introduction",
+      icon: PauseCircle,
     },
     {
-      title: "Browse",
-      href: "/dashboard/browse-courses",
-      icon: GraduationCap,
+      title: "Environment Setup",
+      href: "/",
+      icon: Lock,
     },
     {
-      title: "Courses",
-      href: "/dashboard/courses",
-      icon: BookPlus,
+      title: "Folder Setup",
+      href: "/",
+      icon: Lock,
     },
     {
-      title: "Students",
-      href: "/dashboard/students",
-      icon: Users,
+      title: "Authentication",
+      href: "/",
+      icon: Lock,
     },
     {
-      title: "Notifications",
-      href: "/dashboard/notifications",
-      icon: BellDot,
+      title: "NavBar",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Search Filter",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Category Filter",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Companion Creation Form",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Companion Creation API",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Companion Creation List",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Chat Header",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Chat UI",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Memory Service",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Chat API",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Strip UI",
+      href: "/",
+      icon: Lock,
+    },
+    {
+      title: "Deployment",
+      href: "/",
+      icon: Lock,
     },
   ];
   const pathname = usePathname();
@@ -47,11 +102,11 @@ export default function Sidebar({ isOpen, setIsOpen }) {
     <div
       className={
         isOpen
-          ? "fixed md:static z-50 md:w-72 w-3/4 left-0 shadow-md bg-slate-800 md:bg-slate-950 min-h-screen rounded-md"
-          : "hidden md:block  md:static z-50 md:w-72 w-3/4 left-0 shadow-md bg-slate-800 md:bg-slate-950 min-h-screen rounded-md"
+          ? "fixed md:static z-50 md:w-72 w-3/4 left-0 shadow-md bg-slate-800 md:bg-slate-950 min-h-screen rounded-md overflow-hidden"
+          : "hidden md:block md:static md:w-72 w-3/4 shadow-md bg-slate-800 md:bg-slate-950 min-h-screen rounded-md overflow-hidden overflow-y-auto"
       }
     >
-      <div className=' bg-purple-400 p-2 rounded-md flex justify-between md:justify-center '>
+      <div className=' bg-amber-500 p-2 rounded-md flex justify-between md:justify-center '>
         <div className='flex flex-col items-center justify-center'>
           <Link href='/dashboard' className='text-3xl font-bold'>
             Barista G
