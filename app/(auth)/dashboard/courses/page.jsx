@@ -7,8 +7,7 @@ import React from "react";
 
 export default async function Courses() {
   const getCourses = await getData("courses");
-
-  // console.log(getCourses)
+  console.log(getCourses);
   return (
     <div className=''>
       <div className='flex text-slate-50 items-center justify-between border-b border-slate-700 pb-8'>
@@ -17,17 +16,14 @@ export default async function Courses() {
           href='/dashboard/courses/create'
           className='flex items-center space-x-3 bg-purple-400 text-slate-900 px-8 py-3 rounded-md font-semibold'
         >
-          <Plus />
+          <Plus className='text-xs' />
           <span>Add Course</span>
         </Link>
       </div>
       <div className='grid gap-5 grid-cols-1 md:grid-cols-3 py-8'>
-        {getCourses.map((course, i) => {
+        {getCourses.map((course) => {
           return (
-            <div
-              key={i}
-              className='max-w-sm  border  rounded-lg shadow bg-gray-800 border-gray-700'
-            >
+            <div className='max-w-sm  border  rounded-lg shadow bg-gray-800 border-gray-700'>
               <Link href='#'>
                 <Image
                   className='rounded-t-lg w-full h-[150px]'
@@ -54,12 +50,14 @@ export default async function Courses() {
                     <Eye className='h-5 w-5' />
                   </Link>
                   <Link
-                    href={`/dashboard/courses/edit/${course.id}`}
+                    href='#'
                     className='inline-flex items-center p-2 text-sm font-medium text-center text-white bg-slate-700 rounded-lg hover:bg-slate-900 '
                   >
                     <Pencil className='h-5 w-5' />
                   </Link>
-                  <DeleteBtn courseId={course.id} />
+                  <button className='inline-flex items-center p-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-900 '>
+                    <Trash className='h-5 w-5' />
+                  </button>
                 </div>
               </div>
             </div>
