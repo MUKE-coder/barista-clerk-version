@@ -9,12 +9,21 @@ export default async function CourseDetail({ params: { slug } }) {
   const getSingleBrowseCourse = await getData(`courses/${slug}`);
   // console.log(getSingleBrowseCourse);
   return (
+<<<<<<< HEAD
     <div className=''>
       <div className='grid grid-cols-12 gap-8'>
         <div className='col-span-full lg:col-span-7 rounded-lg shadow border border-purple-200 p-5'>
           <div className='flex items-center space-x-4 px-5 pb-3'>
             <div className='flex bg-purple-100 p-2 rounded-full text-slate-800 items-center justify-center'>
               <BookOpen className='w-4 h-4' />
+=======
+    <div className="">
+      <div className="grid grid-cols-12 gap-8 overflow-hidden">
+        <div className="col-span-full lg:col-span-7 rounded-lg shadow border border-purple-200 p-5">
+          <div className="flex items-center space-x-4 px-5 pb-3">
+            <div className="flex bg-purple-100 p-2 rounded-full text-slate-800 items-center justify-center">
+              <BookOpen className="w-4 h-4" />
+>>>>>>> 519a842054effa7379f1e94947dc446b5dff3329
             </div>
             <span>{getSingleBrowseCourse.chapters.length}</span>
           </div>
