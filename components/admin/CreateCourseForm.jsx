@@ -19,14 +19,16 @@ export default function CreateCourseForm({ setCurrentCourse, id, course }) {
     reset,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: course,
+  });
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(course?.imageUrl);
   // console.log(imageUrl);
 
   async function handleEdit(data) {
     setLoading(true);
-    console.log(data);
+    // console.log(data);
     const response = await fetch(`${baseUrl}/api/courses/preview/${id}`, {
       cache: "no-store",
       method: "PATCH",
@@ -36,11 +38,11 @@ export default function CreateCourseForm({ setCurrentCourse, id, course }) {
       body: JSON.stringify(data),
     });
     if (response.ok) {
-      console.log("Edited Successfully");
+      // console.log("Edited Successfully");
       setLoading(false);
     } else {
       setLoading(false);
-      console.log("Failed to edit course");
+      // console.log("Failed to edit course");
     }
   }
 
@@ -103,7 +105,7 @@ export default function CreateCourseForm({ setCurrentCourse, id, course }) {
               autoComplete='given-name'
               className='block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6'
               placeholder='Type the Course title'
-              defaultValue={id ? course.title : ""}
+              // defaultValue={id ? course.title : ""}
             />
             {errors.title && (
               <span className='text-sm text-red-600 '>
@@ -128,7 +130,7 @@ export default function CreateCourseForm({ setCurrentCourse, id, course }) {
             className='bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-600 focus:border-purple-600 block w-full p-2.5  '
             placeholder='$2999'
             required=''
-            defaultValue={id ? course.price : ""}
+            // defaultValue={id ? course.price : ""}
           />
           {errors.price && (
             <span className='text-sm text-red-600 '>
@@ -151,7 +153,7 @@ export default function CreateCourseForm({ setCurrentCourse, id, course }) {
               name='description'
               rows={3}
               className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
-              defaultValue={id ? course.description : ""}
+              // defaultValue={id ? course.description : ""}
             />
             {errors.title && (
               <span className='text-sm text-red-600 '>
@@ -161,7 +163,6 @@ export default function CreateCourseForm({ setCurrentCourse, id, course }) {
           </div>
         </div>
         {/* Course Image */}
-
         {/* Upload thing */}
         <div className='col-span-full'>
           <div className='flex justify-between items-center mb-4'>
@@ -171,10 +172,11 @@ export default function CreateCourseForm({ setCurrentCourse, id, course }) {
             >
               Course Image
             </label>
+            {/* {(id || imageUrl) && ( */}
             {imageUrl && (
               <button
-                onClick={() => setImageUrl("")}
                 type='button'
+                onClick={() => setImageUrl("")}
                 className='flex space-x-2  bg-slate-900 rounded-md shadow text-slate-50  py-2 px-4'
               >
                 <Pencil className='w-5 h-5' />
@@ -182,9 +184,11 @@ export default function CreateCourseForm({ setCurrentCourse, id, course }) {
               </button>
             )}
           </div>
+          {/* {id || imageUrl ? ( */}
           {imageUrl ? (
             <Image
               src={imageUrl}
+              // src={id ? course.imageUrl : imageUrl}
               alt='course image'
               width={1000}
               height={667}
@@ -215,7 +219,7 @@ export default function CreateCourseForm({ setCurrentCourse, id, course }) {
             <input
               {...register("isPublished")}
               type='checkbox'
-              defaultValue={true}
+              // defaultValue={id ? course.isPublished : true}
               className='sr-only peer'
             />
             <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"></div>

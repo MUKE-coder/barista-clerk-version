@@ -54,7 +54,7 @@ export default function CreateAttachmentForm({
 
   async function handleEdit(data) {
     setLoading(true);
-    console.log(data);
+    // console.log(data);
     const response = await fetch(`${baseUrl}/api/courses/preview/${id}`, {
       cache: "no-store",
       method: "PATCH",
@@ -64,11 +64,11 @@ export default function CreateAttachmentForm({
       body: JSON.stringify(data),
     });
     if (response.ok) {
-      console.log("Edited Successfully");
+      // console.log("Edited Successfully");
       setLoading(false);
     } else {
       setLoading(false);
-      console.log("Failed to edit course");
+      // console.log("Failed to edit course");
     }
   }
   async function onSubmitCreate(data) {

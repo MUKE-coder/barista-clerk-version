@@ -25,7 +25,7 @@ export default function DeleteBtn({ courseId }) {
         );
 
         if (response.ok) {
-          console.log("Course deleted successfully");
+          // console.log("Course deleted successfully");
         } else {
           console.error("Error deleting course:");
         }

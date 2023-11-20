@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { generateSlug } from "@/utils/generateSlug";
 
 export default function CreateChapterForm({
   currentCourse,
@@ -86,6 +87,7 @@ export default function CreateChapterForm({
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     setLoading(true);
 
+    console.log(data);
     const slug = generateSlug(data.title);
     data.slug = slug;
     data.userId = userId;

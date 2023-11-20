@@ -7,7 +7,7 @@ import React from "react";
 export default async function CourseDetail({ params: { slug } }) {
   // console.log(slug)
   const getSingleBrowseCourse = await getData(`courses/${slug}`);
-  console.log(getSingleBrowseCourse);
+  // console.log(getSingleBrowseCourse);
   return (
     <div className=''>
       <div className='grid grid-cols-12 gap-8'>

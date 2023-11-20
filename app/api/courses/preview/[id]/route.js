@@ -30,7 +30,7 @@ export async function GET(request, { params: { id } }) {
 export async function PATCH(request, { params: { id } }) {
   try {
     const { title, price, description } = await request.json();
-    console.log(title, price, description);
+    // console.log(title, price, description);
     const priceValue = parseFloat(price);
     const UpdatedCourse = await db.course.update({
       where: { id },

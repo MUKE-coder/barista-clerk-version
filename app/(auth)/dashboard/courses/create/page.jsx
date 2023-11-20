@@ -30,7 +30,7 @@ export default function Create({ id, course }) {
     },
   ];
   function changeDisplayForm(form) {
-    if (!id) {
+    if (!courseId) {
       toast.error("Please first create the Course");
     } else {
       setDisplayedForm(form);
