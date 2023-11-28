@@ -1,0 +1,102 @@
+export const courses = [
+  {
+    id: 1,
+    title: "Coffee Fundamentals",
+    slug: "coffee-fundamentals",
+    whyChoose: [
+      "Explore coffee origins and processing methods",
+      "Understand sensory aspects and brewing techniques",
+      "Build a strong foundation for your coffee journey",
+    ],
+    features: ["Origin Exploration", "Brewing Artistry", "Sensory Development"],
+    shortDescription: "Discover the essence of coffee from bean to cup.",
+    detailedDescription:
+      "Dive into the basics of coffee, exploring its origins, processing methods, and the art of brewing. Understand the sensory aspects and develop a foundation for your coffee journey. Join us to embark on a flavorful adventure through the world of coffee.",
+    image: "/courses/fundamentals.jpg",
+    studyPeriod: "4 weeks",
+    price: "199",
+    modeOfAttendance: "Online",
+    isFeatured: false,
+  },
+  {
+    id: 2,
+    title: "Advanced Roasting Techniques",
+    slug: "advanced-roasting-techniques",
+    whyChoose: [
+      "Explore intricate coffee roasting profiles",
+      "Understand flavor development and chemistry",
+      "Create unique and custom coffee roasts",
+    ],
+    features: ["Flavor Chemistry", "Custom Roasting", "Hands-on Experience"],
+    shortDescription: "Delve into the complexities of coffee roasting.",
+    detailedDescription:
+      "Uncover the intricacies of coffee roasting, from profiles and temperatures to the chemistry behind flavor development. Gain hands-on experience in creating custom roasts. Elevate your coffee craft to new heights with this comprehensive course.",
+    image: "/courses/roasting.avif",
+    studyPeriod: "6 weeks",
+    price: "249",
+    modeOfAttendance: "Online",
+    isFeatured: false,
+  },
+  {
+    id: 3,
+    title: "Barista Mastery",
+    slug: "barista-mastery",
+    whyChoose: [
+      "Perfect espresso shots and milk frothing",
+      "Create intricate latte art designs",
+      "Elevate your coffee crafting skills",
+    ],
+    features: ["Espresso Perfection", "Latte Artistry", "Milk Frothing"],
+    shortDescription: "Become a master of coffee preparation and presentation.",
+    detailedDescription:
+      "Master the skills of a professional barista – from perfecting espresso shots and milk frothing to creating intricate latte art. Elevate your ability to craft exceptional coffee beverages. Join us in mastering the art of coffee crafting.",
+    image: "/courses/barista.jpg",
+    studyPeriod: "8 weeks",
+    price: "299",
+    modeOfAttendance: "Online",
+    isFeatured: true,
+  },
+  {
+    id: 4,
+    title: "Sustainable Sourcing and Ethics",
+    slug: "sustainable-sourcing-and-ethics",
+    whyChoose: [
+      "Explore ethical and sustainable coffee practices",
+      "Learn about responsible sourcing and fair trade",
+      "Understand coffee's impact on communities and ecosystems",
+    ],
+    features: [
+      "Ethical Practices",
+      "Community Impact",
+      "Sustainability Insights",
+    ],
+    shortDescription: "Uncover the responsible side of the coffee industry.",
+    detailedDescription:
+      "Explore the ethical and sustainable practices within the coffee industry. Learn about responsible sourcing, fair trade, and the impact of coffee production on local communities and ecosystems. Gain insights into how your coffee choices can make a positive difference.",
+    image: "/courses/ethics.jpg",
+    studyPeriod: "5 weeks",
+    price: "179",
+    modeOfAttendance: "Online",
+    isFeatured: false,
+  },
+  {
+    id: 5,
+    title: "Coffee Business Essentials",
+    slug: "coffee-business-essentials",
+    whyChoose: [
+      "Gain insights into coffee business setup",
+      "Learn branding, marketing, and financial management",
+      "Develop skills for a successful coffee shop venture",
+    ],
+    features: ["Business Setup", "Marketing Strategies", "Financial Planning"],
+    shortDescription:
+      "Equip yourself to navigate the world of coffee entrepreneurship.",
+    detailedDescription:
+      "For aspiring coffee entrepreneurs, delve into the business side of coffee. Develop a comprehensive understanding of setting up and managing a successful coffee shop, including branding, marketing, and financial considerations. Join us to turn your passion for coffee into a thriving business.",
+    image: "/courses/business.jpg",
+    studyPeriod: "10 weeks",
+    price: "349",
+    modeOfAttendance: "Online",
+    isFeatured: true,
+  },
+];

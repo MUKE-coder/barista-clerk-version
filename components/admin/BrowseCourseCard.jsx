@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function BrowseCourseCard({course}) {
+export default function BrowseCourseCard({ course }) {
   return (
     <Link
       href={`/dashboard/browse-courses/${course.slug}`}
@@ -23,14 +23,14 @@ export default function BrowseCourseCard({course}) {
           {course.title}
         </h5>
         <p className="mb-3 font-normal text-gray-400 line-clamp-2">
-        {course.description}
+          {course.description}
         </p>
       </div>
       <div className="flex items-center space-x-4 px-5 pb-3">
         <div className="flex bg-purple-100 p-2 rounded-full text-slate-800 items-center justify-center">
           <BookOpen className="w-4 h-4" />
         </div>
-        <span>{course.chapters.length}</span>
+        <span>{course.chapters.length} Chapters</span>
       </div>
     </Link>
   );

@@ -11,6 +11,7 @@ export async function makePostRequest(
   try {
     setLoading(true);
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
     const response = await fetch(`${baseUrl}/${endpoint}`, {
       method: "POST",
       headers: {
@@ -56,7 +57,7 @@ export async function makePutRequest(
       body: JSON.stringify(data),
     });
     if (response.ok) {
-      // console.log(response);
+      console.log(response);
       setLoading(false);
       toast.success(`${resourceName} Updated Successfully`);
       redirect();

@@ -1,0 +1,85 @@
+.login-wrapper {
+  background: linear-gradient(to bottom right, #ffffff, #ffe3fb);
+  @media (max-width: 830px) {
+    background: linear-gradient(to bottom right, #ffffff, #ffe3fbf9),
+      url("/login.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  width: 100vw;
+  min-height: 100vh;
+  padding: 6rem 8rem;
+  @media (max-width: 1030px) {
+    padding: 6rem 4rem;
+    @media (max-width: 890px) {
+      padding: 4rem 2rem;
+    }
+  }
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .login-container {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60vh;
+    width: 100%;
+    .login-image {
+      background: url("/login.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 50%;
+      height: 100%;
+      @media (max-width: 830px) {
+        display: none;
+      }
+    }
+    .login-form {
+      width: 50%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      height: 100%;
+      @media (max-width: 830px) {
+        width: 100%;
+      }
+    }
+    .form {
+      // background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      width: 80%;
+      height: 100%;
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        // input {
+        //   padding: 0.5rem 1rem;
+        //   width: 100%;
+        //   border: 1px solid gray;
+        //   border-radius: 5px;
+        // }
+      }
+      .login-btn {
+        padding: 0.6rem 2rem;
+        background: $primary;
+        transition: all 0.5s ease;
+        color: white;
+        border-radius: 3rem;
+        font-size: 1rem;
+        &:hover {
+          background: rgba($primary, 0.8);
+        }
+      }
+    }
+  }
+}

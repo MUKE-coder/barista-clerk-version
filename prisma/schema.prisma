@@ -13,9 +13,15 @@ model Course {
   title       String
   slug       String @unique
   description String
+  features String []
+  whatToLearn String []
+  requirements String []
+  milestones String []
+  content String?
   imageUrl    String?
   price       Float?
-  isPublished Boolean
+  isPublished Boolean @default(true)
+  isFeatured Boolean @default(false)
   attachments Attachment [] 
   purchases   Purchase[] 
   chapters    Chapter[]

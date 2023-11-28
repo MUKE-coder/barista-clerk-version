@@ -1,4 +1,5 @@
 "use client";
+import useData from "@/context/CourseContext";
 import {
   BellDot,
   BookPlus,
@@ -96,6 +97,8 @@ export default function CoursesSideBar({ isOpen, setIsOpen }) {
       icon: Lock,
     },
   ];
+  const { filterChaptersById } = useData();
+  // const
   const pathname = usePathname();
   // console.log(isOpen);
   return (
@@ -106,22 +109,22 @@ export default function CoursesSideBar({ isOpen, setIsOpen }) {
           : "hidden md:block md:static md:w-72 w-3/4 shadow-md bg-slate-800 md:bg-slate-950 min-h-screen rounded-md overflow-hidden overflow-y-auto"
       }
     >
-      <div className=' bg-amber-500 p-2 rounded-md flex justify-between md:justify-center '>
-        <div className='flex flex-col items-center justify-center'>
-          <Link href='/dashboard' className='text-3xl font-bold'>
+      <div className=" bg-amber-500 p-2 rounded-md flex justify-between md:justify-center ">
+        <div className="flex flex-col items-center justify-center">
+          <Link href="/dashboard" className="text-3xl font-bold">
             Barista G
           </Link>
           <small>The Best school</small>
         </div>
         <button
           onClick={() => setIsOpen(false)}
-          className='md:hidden text-slate-50'
+          className="md:hidden text-slate-50"
         >
           <X />
         </button>
       </div>
-      <div className='flex justify-between  flex-col py-2'>
-        <nav className='py-5 border-b border-slate-700 flex flex-col gap-4 text-slate-50 px-2 pb-6'>
+      <div className="flex justify-between  flex-col py-2">
+        <nav className="py-5 border-b border-slate-700 flex flex-col gap-4 text-slate-50 px-2 pb-6">
           {sidebarLinks.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -141,12 +144,12 @@ export default function CoursesSideBar({ isOpen, setIsOpen }) {
             );
           })}
         </nav>
-        <div className='py-8 flex flex-col gap-4 text-slate-50 px-4'>
-          <button href='/dashboard' className='flex gap-3'>
+        <div className="py-8 flex flex-col gap-4 text-slate-50 px-4">
+          <button href="/dashboard" className="flex gap-3">
             <LogOutIcon />
             <span>Logout</span>
           </button>
-          <Link href='/dashboard' className='flex gap-3'>
+          <Link href="/dashboard" className="flex gap-3">
             <SlidersHorizontal />
             <span>Settings</span>
           </Link>

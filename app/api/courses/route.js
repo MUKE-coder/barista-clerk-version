@@ -24,40 +24,57 @@ export async function GET(request) {
 }
 export async function POST(request) {
   try {
-    // Get Data
-    const { title, imageUrl, price, userId, isPublished, description, slug } =
-      await request.json();
-    const findSlug = await prisma.course.findUnique({
+    /**
+     * **/
+    const {
+      title,
+      imageUrl,
+      price,
+      userId,
+      isPublished,
+      isFeatured,
+      description,
+      slug,
+      features,
+      whatToLearn,
+      requirements,
+      milestones,
+      content,
+    } = await request.json();
+    const existingCourse = await db.course.findUnique({
       where: {
         slug,
       },
     });
 
-    if (findSlug) {
+    if (existingCourse) {
       return NextResponse.json(
-        { error: "Slug already exists" },
+        { message: "Slug already exists", error },
         { status: 409 }
       );
-    } else {
-      const priceValue = parseFloat(price);
-
-      const newCourse = await db.course.create({
-        data: {
-          title,
-          price: isNaN(priceValue) ? null : priceValue,
-          userId,
-          isPublished,
-          description,
-          imageUrl,
-          slug,
-        },
-      });
-
-      // console.log(newCourse);
-      return NextResponse.json(newCourse, {
-        status: 201,
-      });
     }
+    const newCourse = await db.course.create({
+      data: {
+        title,
+        price: parseFloat(price),
+        userId,
+        isPublished,
+        isFeatured,
+        description,
+        imageUrl,
+        slug,
+        features,
+        whatToLearn,
+        requirements,
+        milestones,
+        content,
+      },
+    });
+
+    console.log(newCourse);
+    return NextResponse.json(newCourse, {
+      status: 201,
+    });
   } catch (error) {
     console.error(error);
     return NextResponse.json(

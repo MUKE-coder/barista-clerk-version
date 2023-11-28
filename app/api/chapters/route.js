@@ -23,22 +23,13 @@ export async function POST(request) {
     // Get Data
     const { title, videoUrl, isPaid, courseId, isPublished, description } =
       await request.json();
-    const isPaidValue =
-      typeof isPaid === "string"
-        ? isPaid.toLowerCase() === "true"
-        : Boolean(isPaid);
-    const isPublishedValue =
-      typeof isPublished === "string"
-        ? isPublished.toLowerCase() === "true"
-        : Boolean(isPublished);
-
     const newChapter = await db.chapter.create({
       data: {
         title,
         videoUrl,
-        isPaid: isPaidValue,
+        isPaid,
         courseId,
-        isPublished: isPublishedValue,
+        isPublished,
         description,
       },
     });

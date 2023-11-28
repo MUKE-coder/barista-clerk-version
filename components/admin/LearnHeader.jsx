@@ -1,7 +1,7 @@
 "use client";
 import { Menu } from "lucide-react";
 import Search from "./Search";
-import { UserButton, useUser } from "@clerk/nextjs";
+// import { UserButton, useUser } from "@clerk/nextjs";
 import { useState } from "react";
 
 export default function LearnHeader({ setIsOpen }) {
