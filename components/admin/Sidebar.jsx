@@ -10,30 +10,27 @@ import {
   Users,
   X,
 } from "lucide-react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 
 export default function Sidebar({ isOpen, setIsOpen }) {
-  const sidebarLinks = [
-    {
-      title: "Dashboard",
-      href: "/dashboard",
-      icon: LayoutDashboard,
-    },
+  const handleLogout = async () => {
+    await signOut();
+    router.push("/");
+  };
+  const {data:session,status}=useSession()
+  if(status==='loading'){
+    return <p>loading ...</p>
+  }
+  if(status==='unauthenticated'){
+    redirect('/login')
+  }
+  let sidebarLinks = [
     {
       title: "Browse",
       href: "/dashboard/browse-courses",
       icon: GraduationCap,
-    },
-    {
-      title: "Courses",
-      href: "/dashboard/courses",
-      icon: BookPlus,
-    },
-    {
-      title: "Students",
-      href: "/dashboard/students",
-      icon: Users,
     },
     {
       title: "Notifications",
@@ -41,6 +38,35 @@ export default function Sidebar({ isOpen, setIsOpen }) {
       icon: BellDot,
     },
   ];
+  if(session.user.role==="ADMIN"){
+    sidebarLinks = [
+      {
+        title: "Dashboard",
+        href: "/dashboard",
+        icon: LayoutDashboard,
+      },
+      {
+        title: "Browse",
+        href: "/dashboard/browse-courses",
+        icon: GraduationCap,
+      },
+      {
+        title: "Courses",
+        href: "/dashboard/courses",
+        icon: BookPlus,
+      },
+      {
+        title: "Students",
+        href: "/dashboard/students",
+        icon: Users,
+      },
+      {
+        title: "Notifications",
+        href: "/dashboard/notifications",
+        icon: BellDot,
+      },
+    ];
+  }
   const pathname = usePathname();
   // console.log(isOpen);
   return (
@@ -51,22 +77,22 @@ export default function Sidebar({ isOpen, setIsOpen }) {
           : "hidden md:block  md:static z-50 md:w-72 w-3/4 left-0 shadow-md bg-slate-800 md:bg-slate-950 min-h-screen rounded-md"
       }
     >
-      <div className=' bg-purple-400 p-2 rounded-md flex justify-between md:justify-center '>
-        <div className='flex flex-col items-center justify-center'>
-          <Link href='/dashboard' className='text-3xl font-bold'>
+      <div className=" bg-purple-400 p-2 rounded-md flex justify-between md:justify-center ">
+        <div className="flex flex-col items-center justify-center">
+          <Link href="/dashboard" className="text-3xl font-bold">
             Barista G
           </Link>
           <small>The Best school</small>
         </div>
         <button
           onClick={() => setIsOpen(false)}
-          className='md:hidden text-slate-50'
+          className="md:hidden text-slate-50"
         >
           <X />
         </button>
       </div>
-      <div className='flex justify-between  flex-col py-2'>
-        <nav className='py-5 border-b border-slate-700 flex flex-col gap-4 text-slate-50 px-2 pb-6'>
+      <div className="flex justify-between  flex-col py-2">
+        <nav className="py-5 border-b border-slate-700 flex flex-col gap-4 text-slate-50 px-2 pb-6">
           {sidebarLinks.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -86,12 +112,12 @@ export default function Sidebar({ isOpen, setIsOpen }) {
             );
           })}
         </nav>
-        <div className='py-8 flex flex-col gap-4 text-slate-50 px-4'>
-          <button href='/dashboard' className='flex gap-3'>
+        <div className="py-8 flex flex-col gap-4 text-slate-50 px-4">
+          <button onClick={handleLogout} className="flex gap-3">
             <LogOutIcon />
             <span>Logout</span>
           </button>
-          <Link href='/dashboard' className='flex gap-3'>
+          <Link href="/dashboard" className="flex gap-3">
             <SlidersHorizontal />
             <span>Settings</span>
           </Link>

@@ -1,9 +1,6 @@
 "use client";
 import Header from "@/components/admin/Header";
-import Main from "@/components/admin/Main";
 import Sidebar from "@/components/admin/Sidebar";
-import CoursesSideBar from "@/components/admin/courses-sidebar/CoursesSideBar";
-import { CoursesProvider } from "@/context/CourseContext";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 

@@ -1,13 +1,23 @@
 import DeleteBtn from "@/components/admin/DeleteBtn";
+import NotAuthorized from "@/components/admin/NotAuthorized";
+import { authOptions } from "@/utils/authOptions";
 import { getData } from "@/utils/getData";
 import { Eye, Pencil, Plus, Trash } from "lucide-react";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 export default async function Courses() {
   const getCourses = await getData("courses");
-
+  const session = await getServerSession(authOptions);
+  console.log(session.user.role);
+  if (!session) {
+    return redirect("/login");
+  }
+  if (session.user.role === "USER") {
+    return <NotAuthorized />;
+  }
   return (
     <div className="">
       <div className="flex text-slate-50 items-center justify-between border-b border-slate-700 pb-8">

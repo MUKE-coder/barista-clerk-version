@@ -1,8 +1,15 @@
 import { getData } from "@/utils/getData";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Check, CheckCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import parse from "html-react-parser";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionPanel,
+  AccordionTitle,
+} from "flowbite-react";
 
 export default async function CourseDetail({ params: { slug } }) {
   // console.log(slug)
@@ -72,14 +79,79 @@ export default async function CourseDetail({ params: { slug } }) {
           </div>
         </div>
       </div>
-      <div className="hidden my-4 lg:block">
-        <Image
-          src={courseDetail.imageUrl}
-          width={1000}
-          height={667}
-          className="w-full h-52 rounded-md object-cover"
-        />
+      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2">
+        {courseDetail.milestones.length > 0 && (
+          <div className="flex p-8 bg-slate-700 my-8 text-slate-100 border border0gray-700 rounded-lg flex-col">
+            <h2 className="text-3xl mb-4">This course includes:</h2>
+            <div className="grid grid-cols-1  gap-4 ">
+              {courseDetail.milestones.map((item, i) => {
+                return (
+                  <div key={i} className="flex space-x-3 items-center">
+                    <CheckCheck className="w-6 h-6 shrink-0" />
+                    <p>{item}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+        {courseDetail.requirements.length > 0 && (
+          <div className="flex p-8 bg-slate-700 my-8 text-slate-100 border border0gray-700 rounded-lg flex-col">
+            <h2 className="text-3xl mb-4">Course Requirements</h2>
+            <div className="grid grid-cols-1  gap-4 ">
+              {courseDetail.requirements.map((item, i) => {
+                return (
+                  <div key={i} className="flex space-x-3 items-center">
+                    <CheckCheck className="w-6 h-6 shrink-0" />
+                    <p>{item}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
+      {courseDetail.whatToLearn.length > 0 && (
+        <div className="flex p-8 bg-slate-200 my-8 text-slate-900 border border0gray-700 rounded-lg flex-col">
+          <h2 className="text-3xl mb-4">What you will Learn</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
+            {courseDetail.whatToLearn.map((item, i) => {
+              return (
+                <div className="flex space-x-3 items-center" key={i}>
+                  <Check className="w-6 h-6 shrink-0" />
+                  <p>{item}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {courseDetail.content && (
+        <div className="flex p-8 bg-slate-200 my-8 text-slate-900 border border0gray-700 rounded-lg flex-col">
+          <h2 className="text-3xl mb-4">Course Content</h2>
+          <div className="">{parse(`${courseDetail.content}`)}</div>
+        </div>
+      )}
+      {/* Course Chapters */}
+      {courseDetail?.chapters.length > 0 && (
+        <div className="mx-auto max-w-5xl my-8 px-8 bg-slate-100 py-8">
+          <Accordion collapseAll>
+            {courseDetail.chapters.map((item, i) => {
+              return (
+                <AccordionPanel key={i}>
+                  <AccordionTitle>{item.title}</AccordionTitle>
+                  <AccordionContent>
+                    <p className="mb-2 text-gray-500 dark:text-gray-400">
+                      {item.description}
+                    </p>
+                  </AccordionContent>
+                </AccordionPanel>
+              );
+            })}
+          </Accordion>
+        </div>
+      )}
     </div>
   );
 }

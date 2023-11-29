@@ -1,7 +1,7 @@
 import { makePostRequest } from "@/utils/apiRequest";
 import { generateSlug } from "@/utils/generateSlug";
 import { UploadDropzone } from "@/utils/uploadthing";
-import { useAuth } from "@clerk/nextjs";
+
 import { Pencil, Plus, Watch } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -14,10 +14,12 @@ import ToggleInput from "../FormInputs/ToggleInput";
 import SubmitButton from "../FormInputs/SubmitButton";
 import ImageInput from "../FormInputs/ImageInput";
 import QuillEditor from "../FormInputs/QuillEditor";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/utils/authOptions";
 
 export default function CreateCourseForm() {
-  const { isLoaded, userId } = useAuth();
-  if (!isLoaded || !userId) {
+  const session = getServerSession(authOptions);
+  if (!session ) {
     return null;
   }
   const {
@@ -47,7 +49,7 @@ export default function CreateCourseForm() {
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
     data.slug = slug;
-    data.userId = userId;
+    data.userId = session.user.email;
     data.imageUrl = imageUrl;
     data.features = features;
     data.requirements = requirements;

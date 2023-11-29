@@ -45,7 +45,10 @@ export default function CourseList({ courses }) {
     },
   ];
   return (
-    <section className="mt-12 mx-auto px-4 max-w-screen-xl md:px-8">
+    <section
+      className="mt-12 mx-auto px-4 max-w-screen-xl md:px-8"
+      id="courses"
+    >
       <div className="text-center">
         <h1 className="text-3xl text-gray-800 font-semibold heading-font">
           Our Core Courses

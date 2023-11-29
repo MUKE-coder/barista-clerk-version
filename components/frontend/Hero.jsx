@@ -3,7 +3,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <section className="section-hero top-fix">
+    <section className="section-hero top-fix" id="about">
       <div className="max-w-[700px]">
         <h2 className="text-2xl md:text-5xl text-white py-4 md:py-10 ">
           Discover the Art of Specialty Coffee with Barista Gurus
