@@ -11,11 +11,11 @@ import React from "react";
 export default async function Courses() {
   const getCourses = await getData("courses");
   const session = await getServerSession(authOptions);
-  console.log(session.user.role);
+  // console.log(session.user.role);
   if (!session) {
     return redirect("/login");
   }
-  if (session.user.role === "USER") {
+  if (session?.user?.role === "USER") {
     return <NotAuthorized />;
   }
   return (

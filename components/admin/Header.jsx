@@ -25,8 +25,8 @@ export default function Header({ setIsOpen, title }) {
   if (status === "unauthenticated") {
     router.push("/login");
   }
-  const initials = generateInitials(session.user.name);
-  console.log(session);
+  const initials = generateInitials(session?.user?.name);
+  // console.log(session);
   const handleLogout = async () => {
     await signOut();
     router.push("/");
@@ -41,14 +41,14 @@ export default function Header({ setIsOpen, title }) {
       </button>
       {title === "Hello" ? (
         <h2 className="text-white hidden md:block">
-          {title} <span className="text-purple-400">{session.user?.name}!</span>
+          {title} <span className="text-purple-400">{session?.user?.name}!</span>
         </h2>
       ) : (
         <Link
           href="/dashboard/browse-courses"
           className="text-white hidden md:block"
         >
-          {title} <span className="text-purple-400">{session.user.name}!</span>
+          {title} <span className="text-purple-400">{session?.user?.name}!</span>
         </Link>
       )}
 

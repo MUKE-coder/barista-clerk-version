@@ -10,9 +10,9 @@ import {
 import { getData } from "@/utils/getData";
 
 export default async function SmallCards() {
-  const courses = await getData("courses");
-  const chapters = await getData("chapters");
-  const users = await getData("user");
+  const courses = await getData("courses")??[];
+  const chapters = await getData("chapters")??[];
+  const users = await getData("user")??[];
   // const { courses, users, chapters } = await Promise.all([
   //   coursesData,
   //   usersData,

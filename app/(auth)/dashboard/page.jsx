@@ -12,13 +12,13 @@ export default async function Dashboard() {
   if (!session) {
     return redirect("/login");
   }
-  if (session.user.role === "USER") {
+  if (session?.user?.role === "USER") {
     return <NotAuthorized />;
   }
   return (
     <div>
       <h2 className="text-2xl border-b border-slate-600 py-8">
-        Welcome Admin - {session.user.name}
+        Welcome Admin - {session?.user?.name}
       </h2>
       <SmallCards />
       <div className="py-8 px-16 flex items-center justify-center">

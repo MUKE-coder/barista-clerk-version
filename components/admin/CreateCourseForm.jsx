@@ -20,7 +20,9 @@ const QuillEditor = dynamic(() => import("../FormInputs/QuillEditor"), {
 });
 export default function CreateCourseForm() {
   const { data: session, status } = useSession();
-
+  if(status==="loading"){
+    return <p>loading...</p>
+  }
   const {
     handleSubmit,
     register,
@@ -50,7 +52,7 @@ export default function CreateCourseForm() {
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
     data.slug = slug;
-    data.userId = session.user.id;
+    data.userId = session?.user?.id;
     data.imageUrl = imageUrl;
     data.features = features;
     data.requirements = requirements;

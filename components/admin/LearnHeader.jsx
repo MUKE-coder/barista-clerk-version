@@ -17,7 +17,7 @@ export default function LearnHeader({ setIsOpen }) {
         <Menu />
       </button>
       <h2 className="text-white hidden md:block">
-        Hello <span className="text-purple-400">{user.firstName}!</span>
+        Hello <span className="text-purple-400">{user?.firstName}!</span>
       </h2>
       {/* <Search /> */}
       <div>
