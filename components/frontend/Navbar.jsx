@@ -49,7 +49,7 @@ export default function Navbar() {
   function handleNavBar() {
     setShowNavBar(!showNavbar);
   }
-  const initials = generateInitials(session.user.name);
+  const initials = generateInitials(session?.user?.name);
   // console.log(session);
   const handleLogout = async () => {
     await signOut();

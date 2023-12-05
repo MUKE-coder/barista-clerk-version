@@ -5,5 +5,12 @@ import { getData } from "@/utils/getData";
 
 export default async function CourseDetail({ params: { id } }) {
   const previewSingleCourse = await getData(`courses/preview/${id}`);
-  return <ChapterPreview chapters={previewSingleCourse.chapters} />;
+  const allAttachments = await getData("attachments");
+  const courseAttachments = allAttachments.filter((att) => att.courseId === id);
+  return (
+    <ChapterPreview
+      attachments={courseAttachments}
+      chapters={previewSingleCourse.chapters}
+    />
+  );
 }
