@@ -6,7 +6,7 @@ import { Book, File, LayoutDashboard, Paperclip, Pencil } from "lucide-react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-export default function CreateForm({ courses }) {
+export default function CreateForm({ courses}) {
   const [displayedForm, setDisplayedForm] = useState("course");
   // console.log(displayedForm);
   // console.log(currentCourse, courseId);
@@ -58,7 +58,10 @@ export default function CreateForm({ courses }) {
           </ul>
         </div>
         {displayedForm === "course" ? (
-          <CreateCourseForm />
+          <CreateCourseForm
+            // editingId={editingId}
+            // editingCourse={editingCourse}
+          />
         ) : displayedForm === "chapter" ? (
           <CreateChapterForm courses={courses} />
         ) : (

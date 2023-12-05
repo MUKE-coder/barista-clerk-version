@@ -38,7 +38,7 @@ export default async function Courses() {
               key={course.id}
               className="max-w-sm  border  rounded-lg shadow bg-gray-800 border-gray-700"
             >
-              <Link href="#">
+              <Link href={`/dashboard/browse-courses/${course.slug}`}>
                 <img
                   className="rounded-t-lg w-full h-[200px] object-cover"
                   src={course.imageUrl}
@@ -48,7 +48,7 @@ export default async function Courses() {
                 />
               </Link>
               <div className="p-5">
-                <a href="#">
+                <a href={`/dashboard/browse-courses/${course.slug}`}>
                   <h5 className="mb-2 text-2xl font-bold tracking-tight  text-slate-50 line-clamp-1">
                     {course.title}
                   </h5>
@@ -58,18 +58,18 @@ export default async function Courses() {
                 </p>
                 <div className="flex items-center justify-between">
                   <Link
-                    href="#"
+                    href={`/dashboard/browse-courses/${course.slug}`}
                     className="inline-flex items-center p-2  font-medium text-center text-white bg-slate-700 rounded-lg hover:bg-slate-900 "
                   >
                     <Eye className="h-5 w-5" />
                   </Link>
                   <Link
-                    href="#"
+                    href={`/dashboard/courses/update/${course.id}`}
                     className="inline-flex items-center p-2 text-sm font-medium text-center text-white bg-slate-700 rounded-lg hover:bg-slate-900 "
                   >
                     <Pencil className="h-5 w-5" />
                   </Link>
-                  <DeleteBtn courseId={course.id} />
+                  <DeleteBtn id={course.id} endpoint="courses" />
                 </div>
               </div>
             </div>

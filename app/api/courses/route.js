@@ -83,3 +83,26 @@ export async function POST(request) {
     );
   }
 }
+
+export async function DELETE(request) {
+  try {
+    const id = request.nextUrl.searchParams.get("id");
+    const deletedItem = await db.course.delete({
+      where: {
+        id,
+      },
+    });
+    return NextResponse.json(deletedItem);
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      {
+        error,
+        message: "Failed to Delete Course",
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}

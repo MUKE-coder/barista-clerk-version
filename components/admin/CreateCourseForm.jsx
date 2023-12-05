@@ -1,6 +1,6 @@
+"use client";
 import { makePostRequest } from "@/utils/apiRequest";
 import { generateSlug } from "@/utils/generateSlug";
-import { UploadDropzone } from "@/utils/uploadthing";
 
 import { Pencil, Plus, Watch } from "lucide-react";
 import Image from "next/image";
@@ -13,15 +13,14 @@ import ArrayItemsInput from "../FormInputs/ArrayItemsInput";
 import ToggleInput from "../FormInputs/ToggleInput";
 import SubmitButton from "../FormInputs/SubmitButton";
 import ImageInput from "../FormInputs/ImageInput";
-import QuillEditor from "../FormInputs/QuillEditor";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/utils/authOptions";
-
+import { useSession } from "next-auth/react";
+import dynamic from "next/dynamic";
+const QuillEditor = dynamic(() => import("../FormInputs/QuillEditor"), {
+  ssr: false,
+});
 export default function CreateCourseForm() {
-  const session = getServerSession(authOptions);
-  if (!session ) {
-    return null;
-  }
+  const { data: session, status } = useSession();
+
   const {
     handleSubmit,
     register,
@@ -34,14 +33,16 @@ export default function CreateCourseForm() {
       isFeatured: false,
     },
   });
+  // const editingImageUrl = editingCourse?.imageUrl ?? "";
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   // console.log(imageUrl);
   // Features
+  // const editingFeatures = editingCourse.features ?? [];
   const [features, setFeatures] = useState([]);
-  const [requirements, setRequirements] = useState([]);
+  const [requirements, setRequirements] = useState();
   const [whatToLearn, setWhatToLearn] = useState([]);
-  const [milestones, setMilestones] = useState([]);
+  const [milestones, setMilestones] = useState();
   const [content, setContent] = useState([]);
   console.log(features);
   const isFeatured = watch("isFeatured");
@@ -49,7 +50,7 @@ export default function CreateCourseForm() {
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
     data.slug = slug;
-    data.userId = session.user.email;
+    data.userId = session.user.id;
     data.imageUrl = imageUrl;
     data.features = features;
     data.requirements = requirements;

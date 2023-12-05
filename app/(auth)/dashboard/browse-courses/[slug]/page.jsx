@@ -135,14 +135,16 @@ export default async function CourseDetail({ params: { slug } }) {
       )}
       {/* Course Chapters */}
       {courseDetail?.chapters.length > 0 && (
-        <div className="mx-auto max-w-5xl my-8 px-8 bg-slate-100 py-8">
+        <div className="mx-auto max-w-5xl my-8 px-8 bg-slate-100 py-8 rounded-xl">
           <Accordion collapseAll>
             {courseDetail.chapters.map((item, i) => {
               return (
                 <AccordionPanel key={i}>
-                  <AccordionTitle>{item.title}</AccordionTitle>
+                  <AccordionTitle className="text-2xl">
+                    {item.title}
+                  </AccordionTitle>
                   <AccordionContent>
-                    <p className="mb-2 text-gray-500 dark:text-gray-400">
+                    <p className="mb-2 text-gray-500 dark:text-gray-400 text-sm">
                       {item.description}
                     </p>
                   </AccordionContent>
