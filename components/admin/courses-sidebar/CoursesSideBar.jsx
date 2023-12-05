@@ -1,5 +1,4 @@
 "use client";
-import useData from "@/context/CourseContext";
 import {
   BellDot,
   BookPlus,
@@ -97,8 +96,6 @@ export default function CoursesSideBar({ isOpen, setIsOpen }) {
       icon: Lock,
     },
   ];
-  const { filterChaptersById } = useData();
-  // const
   const pathname = usePathname();
   // console.log(isOpen);
   return (
